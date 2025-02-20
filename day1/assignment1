@@ -1,25 +1,30 @@
-`1. Flight Ticket Booking System`  
-`Scenario:`  
-A travel agency wants to `store the details of N passengers` (Name, Age, Destination). 
-The system should allow:  
-- Adding a `new passenger`  
-- `Sorting` passengers by `destination name (A-Z)`  
-- Searching for passengers traveling to a specific destination  
+#include <stdio.h>
 
-Use `arrays` and implement `sorting and searching techniques`.
-
-`Input Example:`  
-```
-Enter number of passengers: 3
-Passenger 1: Alice, 30, Delhi
-Passenger 2: Bob, 25, Mumbai
-Passenger 3: Charlie, 40, Chennai
-
-Sorted List (by destination):
-Charlie - Chennai
-Alice - Delhi
-Bob - Mumbai
-
-Enter destination to search: Mumbai
-Passengers traveling to Mumbai: Bob
-```
+int main() {
+    int n, low_income = 0, middle_income = 0, high_income = 0;
+    
+    printf("Enter the number of employees: ");
+    scanf("%d", &n);
+    
+    int salaries[n];
+    printf("Enter salaries: ");
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &salaries[i]);
+    }
+    
+    for(int i = 0; i < n; i++) {
+        if(salaries[i] < 30000) {
+            low_income++;
+        } else if(salaries[i] <= 70000) {
+            middle_income++;
+        } else {
+            high_income++;
+        }
+    }
+    
+    printf("Low Income: %d\n", low_income);
+    printf("Middle Income: %d\n", middle_income);
+    printf("High Income: %d\n", high_income);
+    
+    return 0;
+}
