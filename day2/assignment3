@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+float check_balance(float balance) {
+    printf("Your Balance: ₹%.2f\n", balance);
+    return balance;
+}
+
+float withdraw_money(float balance, float amount) {
+    if (amount > balance) {
+        printf("Insufficient Balance!\n");
+    } else {
+        balance -= amount;
+        printf("Transaction Successful. Remaining Balance: ₹%.2f\n", balance);
+    }
+    return balance;
+}
+
+float deposit_money(float balance, float amount) {
+    balance += amount;
+    printf("Transaction Successful. New Balance: ₹%.2f\n", balance);
+    return balance;
+}
+
+int main() {
+    float balance = 10000; // Initial balance
+    int choice;
+    float amount;
+    
+    printf("Enter your choice:\n1. Withdraw\n2. Deposit\n3. Check Balance\nChoice: ");
+    scanf("%d", &choice);
+    
+    switch(choice) {
+        case 1:
+            printf("Enter Amount: ");
+            scanf("%f", &amount);
+            balance = withdraw_money(balance, amount);
+            break;
+        case 2:
+            printf("Enter Amount: ");
+            scanf("%f", &amount);
+            balance = deposit_money(balance, amount);
+            break;
+        case 3:
+            balance = check_balance(balance);
+            break;
+        default:
+            printf("Invalid Choice\n");
+            break;
+    }
+    
+    return 0;
+}
