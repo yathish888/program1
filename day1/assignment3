@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+void assign_grade(int marks, int student_number) {
+    char grade;
+    if (marks >= 90) {
+        grade = 'A';
+    } else if (marks >= 80) {
+        grade = 'B';
+    } else if (marks >= 70) {
+        grade = 'C';
+    } else if (marks >= 60) {
+        grade = 'D';
+    } else {
+        grade = 'F';
+    }
+    printf("Student %d: Grade %c\n", student_number, grade);
+}
+
+int main() {
+    int n;
+    
+    printf("Enter number of students: ");
+    scanf("%d", &n);
+    
+    int marks[n];
+    printf("Enter marks: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &marks[i]);
+    }
+    
+    for (int i = 0; i < n; i++) {
+        assign_grade(marks[i], i + 1);
+    }
+    
+    return 0;
+}
