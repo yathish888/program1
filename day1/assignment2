@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int calculate_bill(int units) {
+    int total_bill = 0;
+    
+    if (units <= 100) {
+        total_bill = units * 2;
+    } else if (units <= 200) {
+        total_bill = (100 * 2) + ((units - 100) * 3);
+    } else {
+        total_bill = (100 * 2) + (100 * 3) + ((units - 200) * 5);
+    }
+    
+    return total_bill;
+}
+
+int main() {
+    int units;
+    
+    printf("Enter units consumed: ");
+    scanf("%d", &units);
+    
+    int total_bill = calculate_bill(units);
+    printf("Total Bill: ₹%d\n", total_bill);
+    
+    return 0;
+}
