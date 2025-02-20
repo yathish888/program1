@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <string.h>
+
+int countPattern(char dna[], char pattern[]) {
+    int count = 0;
+    int len_dna = strlen(dna);
+    int len_pattern = strlen(pattern);
+    
+    for (int i = 0; i <= len_dna - len_pattern; i++) {
+        int j;
+        for (j = 0; j < len_pattern; j++) {
+            if (dna[i + j] != pattern[j]) {
+                break;
+            }
+        }
+        if (j == len_pattern) {
+            count++;
+        }
+    }
+    
+    return count;
+}
+
+int main() {
+    char dna[100], pattern[100];
+    
+    printf("Enter DNA Sequence: ");
+    fgets(dna, sizeof(dna), stdin);
+    // Remove newline character from fgets input
+    dna[strcspn(dna, "\n")] = 0;
+    
+    printf("Enter pattern to search: ");
+    fgets(pattern, sizeof(pattern), stdin);
+    // Remove newline character from fgets input
+    pattern[strcspn(pattern, "\n")] = 0;
+    
+    int occurrences = countPattern(dna, pattern);
+    
+    printf("Pattern found %d time(s) in the DNA sequence.\n", occurrences);
+    
+    return 0;
+}
