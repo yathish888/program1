@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int n, total_tax = 0;
+    char vehicle_type[10];
+    
+    printf("Enter number of vehicles: ");
+    scanf("%d", &n);
+    
+    printf("Enter vehicle types: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%s", vehicle_type);
+        
+        switch(vehicle_type[0]) {
+            case 'C':
+                total_tax += 50;
+                break;
+            case 'T':
+                total_tax += 100;
+                break;
+            case 'B':
+                if (strcmp(vehicle_type, "Bike") == 0) {
+                    total_tax += 20;
+                } else {
+                    total_tax += 80;
+                }
+                break;
+            default:
+                printf("Invalid vehicle type\n");
+                break;
+        }
+    }
+    
+    printf("Total Toll Tax: ₹%d\n", total_tax);
+    
+    return 0;
+}
