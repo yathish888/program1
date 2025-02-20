@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <string.h>
+
+typedef struct {
+    char name[50];
+    int age;
+    char destination[50];
+} Passenger;
+
+void addPassenger(Passenger passengers[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("Passenger %d:\n", i + 1);
+        printf("Name: ");
+        scanf("%s", passengers[i].name);
+        printf("Age: ");
+        scanf("%d", &passengers[i].age);
+        printf("Destination: ");
+        scanf("%s", passengers[i].destination);
+    }
+}
+
+void sortPassengers(Passenger passengers[], int n) {
+    Passenger temp;
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (strcmp(passengers[i].destination, passengers[j].destination) > 0) {
+                temp = passengers[i];
+                passengers[i] = passengers[j];
+                passengers[j] = temp;
+            }
+        }
+    }
+}
+
+void searchPassengers(Passenger passengers[], int n, char destination[]) {
+    printf("Passengers traveling to %s:\n", destination);
+    for (int i = 0; i < n; i++) {
+        if (strcmp(passengers[i].destination, destination) == 0) {
+            printf("%s\n", passengers[i].name);
+        }
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter number of passengers: ");
+    scanf("%d", &n);
+    
+    Passenger passengers[n];
+    addPassenger(passengers, n);
+    
+    sortPassengers(passengers, n);
+    
+    printf("\nSorted List (by destination):\n");
+    for (int i = 0; i < n; i++) {
+        printf("%s - %s\n", passengers[i].name, passengers[i].destination);
+    }
+    
+    char destination[50];
+    printf("\nEnter destination to search: ");
+    scanf("%s", destination);
+    
+    searchPassengers(passengers, n, destination);
+    
+    return 0;
+}
